@@ -1,0 +1,72 @@
+ <!-- Product section-->
+ <section class="py-5" style="color: white;">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0 p-5"  src="{{restBody.photograph}}" alt="..." /></div>
+            <div class="col-md-6">
+                <h1 class="display-5 fw-bolder">{{restBody.name}}</h1>
+                <div class="mb-3 fs-5">
+                  <a style="color: rgb(111, 145, 232); text-decoration: none;" href="update-restuarnt/{{restBody.id}}">Update Resturanat detailes</a><br>
+                  <a style="color:rgb(111, 145, 232); text-decoration: none;" href="delete-restuarnt/{{restBody.id}}">Delete Resturanat detailes</a>
+
+                </div>
+                <div class="small mb-1">ID:{{restBody.id}}</div>
+                <div class="fs-5 mb-5">
+                    <span>{{restBody.neighborhood}}</span>
+                </div>
+                <div class="fs-5 mb-5">
+                    <span>Address:&nbsp;&nbsp;{{restBody.address}}</span>
+                </div>
+                <div class="fs-5 mb-5">
+                    <span>Cuisine Type:&nbsp;&nbsp;{{restBody.cuisine_type}}</span>
+                </div>
+                <!-- button -->
+
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Operating Hours
+  </button>
+  
+  <!-- Modal -->
+  <div   class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div style="background-color:white;" class="modal-header">
+          <h5 style="color:black ;" class="modal-title" id="exampleModalLabel"> Operating Hours</h5>
+          <button  type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="background-color: black;">
+            <!-- list item -->
+            <ul class="list-group"  >
+                <li style="background-color: black;color: white;" class="list-group-item">Monday:&nbsp;&nbsp;<b>{{restBody.operating_hours['Monday']}}</b></li>
+                <li style="background-color: black;color: white;"  class="list-group-item">Tuesday:&nbsp;&nbsp;<b>{{restBody.operating_hours['Tuesday']}}</b></li>
+                <li style="background-color: black;color: white;" class="list-group-item">Wednesday:&nbsp;&nbsp;<b>{{restBody.operating_hours['Wednesday']}}</b></li>
+                <li style="background-color: black;color: white;" class="list-group-item">Thursday:&nbsp;&nbsp;<b>{{restBody.operating_hours['Thursday']}}</b></li>
+                <li style="background-color: black;color: white;" class="list-group-item">Friday:&nbsp;&nbsp;<b>{{restBody.operating_hours['Friday']}}</b></li>
+                <li style="background-color: black;color: white;" class="list-group-item">Saturday:&nbsp;&nbsp;<b>{{restBody.operating_hours['Saturday']}}</b></li>
+                <li style="background-color: black;color: white;" class="list-group-item">Sunday:&nbsp;&nbsp;<b>{{restBody.operating_hours['Sunday']}}</b></li>
+
+              </ul>
+        </div>
+      </div>
+    </div>
+  </div><br><br>
+  <p>
+    <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+      Review
+    </button>
+  </p>
+  <div style="min-height: 120px;">
+    <div class="collapse collapse-horizontal" id="collapseWidthExample">
+      <div class="card card-body" style="width: 650px;color: white;background-color:black ;" *ngFor="let item of restBody.reviews">
+        <h5>{{item['name']}}({{item['date']}})</h5>
+        <h6>Rating: {{item['rating']}}</h6>
+        <p>Comments:{{item['comments']}}</p>
+      </div>
+    </div>
+  </div>
+
+            </div>
+        </div>
+    </div>
+</section>
